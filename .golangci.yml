@@ -10,20 +10,19 @@ linters:
     - govet
     - staticcheck
     - errcheck
-    - gofmt
-    - goimorts
     - gosec
+  exclusions:
+    presets:
+      - comments
+      - common-false-positives
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+      - vendor$
 
-exclusions:
-  generated: strict
-
-  presets:
-    - comments
-    - common-false-positives
-    - std-error-handling
-
-paths:
-  - third_party$
-  - builtin$
-  - examples$
-  - vendor$
+formatters:
+  enable:
+    - gofmt
+    - goimports
