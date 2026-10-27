@@ -32,3 +32,21 @@ func ClearScreen() {
 	cmd.Stderr = os.Stderr
 	_ = cmd.Run()
 }
+
+func GetUserHomePath() (string, error) {
+	homePath, err := os.UserHomeDir()
+	if err != nil {
+		return "", err
+	}
+
+	info, err := os.Stat(homePath)
+	if err != nil {
+		return "", err
+	}
+
+	if !info.IsDir() {
+		return "", fmt.Errorf("Not a directory: %s", homePath)
+	}
+
+	return homePath, nil
+}
