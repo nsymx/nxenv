@@ -45,7 +45,7 @@ func GetUserHomePath() (string, error) {
 	}
 
 	if !info.IsDir() {
-		return "", fmt.Errorf("Not a directory: %s", homePath)
+		return "", fmt.Errorf("not a directory: %s", homePath)
 	}
 
 	return homePath, nil
